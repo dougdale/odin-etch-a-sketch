@@ -5,6 +5,10 @@ const container = document.querySelector('#container');
 container.style.width = `${containerWidth}px`;
 container.style.height = `${containerWidth}px`;
 
+function handleEvent() {
+    this.style.backgroundColor = 'black';
+}
+
 function buildGrid() {
   const widthString = `${containerWidth/squaresPerSide}px`;
 
@@ -14,6 +18,7 @@ function buildGrid() {
     gridBox.style.width = widthString;
     gridBox.style.height = widthString;
     gridBox.style.flex = `1 0 ${widthString}`;
+    gridBox.addEventListener('mouseenter', handleEvent);
 
     container.appendChild(gridBox);
   }
