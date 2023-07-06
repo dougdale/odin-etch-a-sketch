@@ -1,6 +1,7 @@
 let squaresPerSide = 4;
 const containerWidth = 800;
 const container = document.querySelector('#container');
+const sizeButton = document.querySelector('#size');
 
 container.style.width = `${containerWidth}px`;
 container.style.height = `${containerWidth}px`;
@@ -23,5 +24,18 @@ function buildGrid() {
     container.appendChild(gridBox);
   }
 }
+
+function changeSize() {
+  squaresPerSide = prompt('Enter new number of squares per side: ');
+
+  if (squaresPerSide > 100) squaresPerSide = 100;
+
+  const gridBoxList = document.querySelectorAll('.gridbox');
+  gridBoxList.forEach((el) => container.removeChild(el));
+
+  buildGrid();
+}
+
+sizeButton.addEventListener('click', changeSize);
 
 buildGrid();
